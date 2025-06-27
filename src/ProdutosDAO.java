@@ -38,8 +38,8 @@ public class ProdutosDAO {
             System.out.println("ERRO AO CADASTRAR PRODUTO: " + e.getMessage());
         }
     }
-
-    public ArrayList<ProdutosDTO> listarProdutos() {
+    
+        public ArrayList<ProdutosDTO> listarProdutos() {
 
         conn = new conectaDAO().connectDB();
 
@@ -67,62 +67,6 @@ public class ProdutosDAO {
         }
     }
 
-    public void venderProduto(int id) {
-
-        conn = new conectaDAO().connectDB();
-
-        String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
-
-        try {
-            prep = conn.prepareStatement(sql);
-
-            prep.setInt(1, id); //DEFININDO ID DO PRODUTO PARA ATUALIZACAO.
-
-            int linha = prep.executeUpdate();
-
-            if (linha > 0) {
-                JOptionPane.showMessageDialog(null, "PRODUTO VENDIDO COM SUCESSO.");
-            } else {
-                JOptionPane.showMessageDialog(null, "PRODUTO NÃO ENCONTRADO OU JA VENDIDO.");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "ERRO AO VENDER O PRODUTO."+e.getMessage());
-        }
-    }
-
-    public ArrayList<ProdutosDTO> listarProdutosVendidos() {
-        
-        ArrayList<ProdutosDTO> listaVendidos = new ArrayList<>();
-        
-        conn = new conectaDAO().connectDB();
-
-        String sql = "SELECT * FROM produtos WHERE status = 'Vendido'";
-        
-        try {
-            prep = conn.prepareStatement(sql);
-            resultset = prep.executeQuery();
-
-            while (resultset.next()) {
-                ProdutosDTO produto = new ProdutosDTO();
-                
-                produto.setId(resultset.getInt("id"));
-                produto.setNome(resultset.getString("nome"));
-                produto.setValor(resultset.getInt("valor"));
-                produto.setStatus(resultset.getString("status"));
-                listaVendidos.add(produto); 
-            }
-        } catch (SQLException e) {
-            
-            JOptionPane.showMessageDialog(null, "ERRO AO LISTAR PRODUTOS VENDIDOS: " + e.getMessage());
-        }
-
-        return listaVendidos;
-    }
-
 }
 
-    
-    
-        
-}
 
