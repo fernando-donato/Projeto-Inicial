@@ -38,8 +38,8 @@ public class ProdutosDAO {
             System.out.println("ERRO AO CADASTRAR PRODUTO: " + e.getMessage());
         }
     }
-
-    public ArrayList<ProdutosDTO> listarProdutos() {
+    
+        public ArrayList<ProdutosDTO> listarProdutos() {
 
         conn = new conectaDAO().connectDB();
 
@@ -66,8 +66,8 @@ public class ProdutosDAO {
             return null;
         }
     }
-
-    public void venderProduto(int id) {
+        
+        public void venderProduto(int id) {
 
         conn = new conectaDAO().connectDB();
 
@@ -89,8 +89,8 @@ public class ProdutosDAO {
             JOptionPane.showMessageDialog(null, "ERRO AO VENDER O PRODUTO."+e.getMessage());
         }
     }
-
-    public ArrayList<ProdutosDTO> listarProdutosVendidos() {
+   
+        public ArrayList<ProdutosDTO> listarProdutosVendidos() {
         
         ArrayList<ProdutosDTO> listaVendidos = new ArrayList<>();
         
@@ -121,8 +121,4 @@ public class ProdutosDAO {
 
 }
 
-    
-    
-        
-}
 
